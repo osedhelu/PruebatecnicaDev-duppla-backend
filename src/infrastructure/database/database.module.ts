@@ -5,13 +5,15 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 
 const config: SqliteConnectionOptions = {
   type: 'sqlite',
-  database: '../db',
+  database: '../db.sqlite',
   entities: [ComicsTables],
   synchronize: true,
 };
 @Module({
-  imports: [TypeOrmModule.forRoot(config)],
-  controllers: [],
-  providers: [],
+  imports: [
+    TypeOrmModule.forRoot(config),
+    TypeOrmModule.forFeature([ComicsTables]),
+  ],
+  exports: [TypeOrmModule],
 })
 export class databaseModule {}

@@ -12,6 +12,6 @@ export class MarvelRepository implements MarvelRepositoryImpl {
   ) {}
   findAll(): Promise<any> {
     // TODO: crear el metodo para listar todos los Comics de marvel
-    throw new Error('Method not implemented.');
+    return 'hola mundo' as any;
   }
 }

@@ -2,7 +2,7 @@ import { MarvelRepositoryImpl } from '@/infrastructure/repositories/repository-i
 import { Inject, Injectable } from '@nestjs/common';
 
 @Injectable()
-export class BalanceOfUseCase {
+export class ListComicsUseCase {
   constructor(
     @Inject('MarvelRepositoryImpl')
     private marvelRepository: MarvelRepositoryImpl,
