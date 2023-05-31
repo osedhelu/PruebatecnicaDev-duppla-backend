@@ -1,7 +1,7 @@
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class TransactionBlockchain {
+export class ComicsTables {
   @PrimaryGeneratedColumn('uuid')
   id?: string;
   @Column({

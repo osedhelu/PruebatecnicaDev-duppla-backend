@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { MarvelRepository } from './repositories/marvel.repository';
+import { databaseModule } from '../database/database.module';
 
 const getAllImport = [
   {
@@ -8,6 +9,7 @@ const getAllImport = [
   },
 ];
 @Module({
+  imports: [databaseModule],
   providers: getAllImport,
   exports: getAllImport,
 })

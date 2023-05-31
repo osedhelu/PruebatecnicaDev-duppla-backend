@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { MarvelRepositoryImpl } from '../repository-impl/marvel.repositoryImpl';
-import { ComicsTables } from 'src/infrastructure/database/entitys/ComicsTables.entity';
+import { ComicsTables } from '@/infrastructure/database/entitys/ComicsTables.entity';
 
 @Injectable()
 export class MarvelRepository implements MarvelRepositoryImpl {
