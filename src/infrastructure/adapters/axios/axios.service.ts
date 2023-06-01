@@ -1,3 +1,4 @@
+import { findOneComicsDto } from '@/presentation/dto/marvel-findone-comics.dto';
 import { MarvelComicsDto } from '@/presentation/dto/mavel-comics.dto';
 import { HttpService } from '@nestjs/axios';
 import { Injectable, Logger } from '@nestjs/common';
@@ -23,6 +24,7 @@ export class AxiosService {
               title: resp.title,
               images: `${resp.thumbnail.path}.${resp.thumbnail.extension}`,
               id: resp.id,
+              price: resp.prices,
             };
           }),
         ),
@@ -38,11 +40,19 @@ export class AxiosService {
   }
   async getFindOne(id: string) {
     const response$ = this.httpService
-      .get(
+      .get<findOneComicsDto>(
         `http://gateway.marvel.com/v1/public/comics/${id}?ts=10&apikey=f68eb4c2e95cafeb74ad1b49376ecc6b&hash=83884137d5dbc139510afa66bab5ed9e`,
       )
       .pipe(
         map((response) => response.data),
+        map((response) => response.data),
+        map((response) => response.results),
+        map((response) => ({
+          title: response[0].title,
+          description: response[0].description,
+          image: `${response[0].thumbnail.path}.${response[0].thumbnail.extension}`,
+          images: response[0].images.map((re) => `${re.path}.${re.extension}`),
+        })),
         catchError((error: AxiosError) => {
           this.logger.error(error.response.data);
           throw 'An error happened!';

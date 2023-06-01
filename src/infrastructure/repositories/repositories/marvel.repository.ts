@@ -12,6 +12,9 @@ export class MarvelRepository implements MarvelRepositoryImpl {
     private transactionRepository: Repository<ComicsTables>,
     private readonly axiosservice: AxiosService,
   ) {}
+  async findOne(id: string): Promise<any> {
+    return await this.axiosservice.getFindOne(id);
+  }
   async findAll(): Promise<any> {
     return await this.axiosservice.getListComics();
   }
