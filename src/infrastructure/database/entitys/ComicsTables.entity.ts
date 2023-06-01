@@ -30,7 +30,7 @@ export class ComicsTables {
   @Column('simple-array')
   images: string[];
 
-  @ManyToMany(() => CreatorTable, (creator) => creator.comics)
+  @ManyToMany(() => CreatorTable, (creator) => creator.comics, { eager: true })
   creators: CreatorTable[];
 
   @Column('text')

@@ -23,8 +23,13 @@ export class MarvelRepository implements MarvelRepositoryImpl {
       const comicData = await this.axiosservice.getFindOne(id);
       comic = await this.saveAllData(comicData);
     }
+    const test = {
+      ...comic,
+      id: comic.idComics,
+    };
 
-    return await this.axiosservice.getFindOne(id);
+    console.log('TCL: MarvelRepository -> test', test);
+    return test;
   }
   async findAll(): Promise<any> {
     return await this.axiosservice.getListComics();
@@ -45,7 +50,6 @@ export class MarvelRepository implements MarvelRepositoryImpl {
     });
 
     this.comicRepository.save(aa);
-    console.log('TCL: MarvelRepository -> aa', aa);
     return aa;
   }
 
