@@ -1,6 +1,6 @@
 import { ListComicsUseCase } from '@/application/ListComics.usecase';
 import { findOneComicsUseCase } from '@/application/findOneComics.usecase';
-import { Body, Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
 @Controller()
 export class MarvelController {
